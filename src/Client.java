@@ -1,4 +1,5 @@
 import java.util.LinkedList;
+import java.util.stream.Collectors;
 
 public class Client{
 	private String name;
@@ -30,9 +31,8 @@ public class Client{
 	}
 	public String history(){
 		String str = "\n" + this + "\n";
-		for (Operation operation : history){
-			str += operation + "\n";
-		}
-		return str + "\n";
+		return history.stream()
+			.map( operation -> "\n" + operation.toString())
+			.collect(Collectors.joining("\n"));
 	}
 }
