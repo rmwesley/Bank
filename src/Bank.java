@@ -1,17 +1,20 @@
 import java.util.HashMap;
+import java.util.Map;
 import java.lang.Integer;
 
 public class Bank {
+	private static Bank singleInstance;
 	private static int numberOfClients = 0;
-	private HashMap<Integer, Client> clients;
-	private HashMap<String, Integer> identifiers;
+	private Map<Integer, Client> clients;
+	private Map<String, Integer> identifiers;
 
 	private Bank(){
 		this.clients = new HashMap<Integer, Client>();
 		this.identifiers = new HashMap<String, Integer>();
 	}
 	public static Bank init(){
-		return new Bank();
+		if (singleInstance == null) singleInstance = new Bank();
+		return singleInstance;
 	}
 	public void addClient(String name){
 		Client client = new Client(name, ++numberOfClients);

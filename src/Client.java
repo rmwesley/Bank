@@ -1,17 +1,16 @@
 import java.util.LinkedList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Client{
 	private String name;
 	private int id;
-	private double balance;
-	private LinkedList<Operation> history;
+	private double balance = 0;
+	private List<Operation> history = new LinkedList<Operation>();
 
 	public Client(String name, int id){
 		this.name = name;
 		this.id = id;
-		this.balance = 0;
-		this.history = new LinkedList<Operation>();
 	}
 	public void deposit(double amount){
 		this.balance += amount;
